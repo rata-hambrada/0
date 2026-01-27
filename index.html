@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo Hacker</title>
+  <style>
+    /* Reset y base */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: monospace, monospace;
+      background-color: #000;
+      color: #00ff00;
+      line-height: 1.5;
+      padding: 0 15px 40px;
+    }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background-color: #000;
+      border-bottom: 2px solid #00ff00;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 30px;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.7rem;
+      color: #00ff00;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
+    .menu {
+      display: flex;
+      gap: 25px;
+    }
+
+    .menu a {
+      color: #00ff00;
+      text-decoration: none;
+      padding: 8px 15px;
+      border: 1px solid #00ff00;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu a:hover,
+    .menu a:focus {
+      background-color: #003300;
+      outline: none;
+    }
+
+    /* Contenedor principal */
+    .container {
+      max-width: 900px;
+      margin: 80px auto 40px; /* deja espacio para navbar */
+    }
+
+    /* Secciones */
+    section {
+      margin-bottom: 50px;
+      padding-bottom: 25px;
+      border-bottom: 1px dashed #004400;
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #00ff00;
+      padding-bottom: 8px;
+      user-select: none;
+    }
+
+    .delito-content {
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .delito-content img {
+      width: 250px;
+      height: 150px;
+      object-fit: cover;
+      border: 2px solid #00ff00;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    .delito-text {
+      flex: 1 1 300px;
+    }
+
+    .delito-text p {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+
+    .btn-info {
+      margin-top: 15px;
+      background: none;
+      border: 1.5px solid #00ff00;
+      color: #00ff00;
+      padding: 8px 18px;
+      cursor: pointer;
+      font-family: monospace;
+      font-size: 1.05rem;
+      border-radius: 5px;
+      transition: background-color 0.25s ease;
+      user-select: none;
+    }
+
+    .btn-info:hover,
+    .btn-info:focus {
+      background-color: #003300;
+      outline: none;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.95);
+      z-index: 1100;
+      overflow-y: auto;
+      padding: 50px 20px;
+      font-size: 1.1rem;
+      color: #00ff00;
+      font-family: monospace;
+    }
+
+    .modal-content {
+      max-width: 600px;
+      margin: auto;
+      background-color: #000;
+      border: 2px solid #00ff00;
+      border-radius: 8px;
+      padding: 25px 30px;
+      position: relative;
+      box-shadow: 0 0 15px #00ff00;
+    }
+
+    .modal-content h3 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      border-bottom: 1px solid #00ff00;
+      padding-bottom: 8px;
+      user-select: none;
+    }
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      font-size: 30px;
+      color: #00ff00;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #55ff55;
+      outline: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .delito-content {
+        flex-direction: column;
+      }
+      .delito-content img {
+        width: 100%;
+        height: auto;
+      }
+      .container {
+        margin: 80px 15px 40px;
+        padding: 0;
+      }
+    }
+    nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #000;
+  border-bottom: 2px solid #00ff00;
+  display: flex;
+  align-items: center; /* centra verticalmente */
+  justify-content: space-between;
+  padding: 0 30px; /* espacio a los lados */
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+nav img {
+  height: 40px; /* tamaño consistente y sin distorsión */
+  object-fit: contain;
+  user-select: none;
+}
+
+  </style>
+</head>
+<body>
+<nav>
+  <img src="12.jpg" alt="Logo" />
+  <div class="menu" role="navigation" aria-label="Menú de delitos">
+    <a href="#extorsion">Extorsión</a>
+    <a href="#robo">Robo</a>
+    <a href="#Homicidio">Homicidio</a>
+  </div>
+</nav>
+<section id="personas" tabindex="-1">
+  <h2>Personas</h2>
+  <div class="personas-grid">
+
+    <article class="persona-card">
+      <img src="1.jpeg" alt="Foto de María López" />
+      <div class="persona-info">
+        <h3>Luis Pérez Garduño</h3>
+       <p><strong>Código Postal (CP):</strong> 52910</p>
+<p><strong>Manzana (Mza):</strong> 27</p>
+<p><strong>Calle:</strong> AV DE LAS FLORES</p>
+<p><strong>Colonia:</strong> COL SAGITARIO I</p>
+<p><strong>Exterior (Ext):</strong> MZ 215  LT 9</p>
+      </div>
+    </article>
+
+    <article class="persona-card">
+      <img src="2.jpeg" alt="Foto de Juan Pérez" />
+      <div class="persona-info">
+        <h3>Enrique Pérez Garduño</h3>
+<p><strong>Fecha de nacimiento:</strong> 1981-12-20</p>
+<p><strong>Edad:</strong> 30</p>
+<p><strong>Sexo:</strong> H</p>
+<p><strong>Código Postal (CP):</strong> 52949</p>
+<p><strong>Manzana (Mza):</strong> 27</p>
+<p><strong>Calle:</strong> AV DE LAS FLORES</p>
+<p><strong>Colonia:</strong> COL PLAN SAGITARIO 1</p>
+<p><strong>Interior (Int):</strong> LT 9</p>
+<p><strong>Exterior (Ext):</strong> MZA 215</p>
+<p><strong>CURP:</strong> PEGE811220HMCRRN06</p>
+<p><strong>CVE:</strong> PRGREN81122015H400</p>
+
+        <p><strong>Delito:</strong> Robo</p>
+      </div>
+    </article>
+
+
+    <article class="persona-card">
+      <img src="3.jpeg" alt="Foto de María López" />
+      <div class="persona-info">
+        <h3>Violeta Pérez Garduño</h3>
+       <p><strong>Fecha de nacimiento:</strong> 1975-04-04</p>
+<p><strong>Edad:</strong> 50</p>
+<p><strong>Código Postal (CP):</strong> 52910</p>
+<p><strong>Manzana (Mza):</strong> 27</p>
+<p><strong>Calle:</strong> AV DE LAS FLORES</p>
+<p><strong>Colonia:</strong> COL SAGITARIO I</p>
+<p><strong>Exterior (Ext):</strong> MZ 215  LT 9</p>
+<p><strong>CURP:</strong> PEGV750404MMCRRL08</p>
+<p><strong>CVE:</strong> PRGRVL75040415M900</p>
+
+
+      </div>
+    </article>
+
+</article>
+
+    <article class="persona-card">
+      <img src="4.jpeg" alt="Foto de María López" />
+      <div class="persona-info">
+        <h3>YOANA IVON CARMONA POCEROS</h3>
+       <p><strong>Fecha de nacimiento:</strong> 1989-10-27</p>
+<p><strong>Edad:</strong> 36</p>
+<p><strong>Código Postal (CP):</strong> 52949</p>
+<p><strong>Manzana (Mza):</strong> 27</p>
+<p><strong>Calle:</strong> AV DE LAS AGUILAS </p>
+<p><strong>Colonia:</strong> COL Las aguilas</p>
+<p><strong>Exterior (Ext):</strong> 92</p>
+<p><strong>CURP:</strong> CAPY891027MMCRCN00</p>
+
+
+      </div>
+    </article>
+    
+
+    <article class="persona-card">
+      <img src="11.jpeg" alt="Foto de María López" />
+      <div class="persona-info">
+        <h3>Emili Rodriguez (hija de enrique)</h3>
+    
+
+
+      </div>
+    </article>
+
+    <!-- Más tarjetas aquí -->
+  </div>
+</section>
+
+<style>
+  .personas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 20px;
+  }
+  .persona-card {
+    background-color: #000;
+    border: 2px solid #00ff00;
+    border-radius: 8px;
+    padding: 15px;
+    width: 220px;
+    box-shadow: 0 0 10px #00ff00;
+    user-select: none;
+  }
+  .persona-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid #00ff00;
+    border-radius: 6px;
+  }
+  .persona-info {
+    margin-top: 12px;
+    color: #00ff00;
+    font-family: monospace;
+  }
+  .persona-info h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+  }
+  .persona-info p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 600px) {
+    .personas-grid {
+      justify-content: center;
+    }
+    .persona-card {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+</style>
+<h3>Los invitamos a compartir esta informacion hasta que llegue a manos de sus Amigos de la Familia M , en espera de una pronta justicia social </h3>
+
+  <main class="container">
+    <section id="extorsion" tabindex="-1">
+      <h2>Extorsión</h2>
+      <div class="delito-content">
+        <img src="9.jpg" alt="Extorsión" />
+        <div class="delito-text">
+          <p>Exigen dinero a los viene viene y comercio informal en las inmediaciones del Hospital General de Zona #72, a cada trabajador informal le solicitan el pago de $150 diario en efectivo y les exigen unirse al sindicato TUTRAM , bajo pena de exclusion de su zona laboral y violencia constante contra todos los que se opongan </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="robo" tabindex="-1">
+      <h2>Robo</h2>
+      <div class="delito-content">
+        <img src="5.jpeg" alt="Robo" />
+        <div class="delito-text">
+          <p>Apropiación indebida de bienes ajenos, mediante la simulacion de cateos en compañia y apoyo de Miguel Osvaldo Castillo Martínez, conocido por Extorsión, cateos falsos, desapariciones, homicidios y fosas clandestinas .</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="Homicidio" tabindex="-1">
+      <h2>Homicidio</h2>
+      <div class="delito-content">
+        <img src="7.jpg" alt="Fraude" />
+        <div class="delito-text">
+          <p>En complicidad con el area de inteligencia de la FGR  y de Miguel Osvaldo Castillo Martínez mataron a  Gonzalo “N”, líder de Grúas Búfalo, y su escolta .
+            <br>Todo se desarrollo, planeo y ejecuto con complicidad de las personas aqui exhibidas, desde inmediaciones del Hospital General de zona #72</p>
+        </div>
+      </div>
+    </section>
+
+ <section id="Homicidio" tabindex="-1">
+      <h2>Lavado de Dinero</h2>
+      <div class="delito-content">
+        <img src="0.jpg" alt="Fraude" />
+        <div class="delito-text">
+          <p>Mediante un negocio establecido de nombre EMI MAQUINADOS realizan el lavado de dinero generado por actos de extorsion, secuestro y robo .
+            <br>El dueño de este negocio (lavanderia) es Enrique Pérez Garduño</p>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+
+  <script>
+    // Abre modal y actualiza aria-expanded
+    function openModal(id, btn) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'block';
+      modal.focus();
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+
+    // Cierra modal y actualiza aria-expanded
+    function closeModal(id, btn) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'none';
+      if (btn) {
+        // Buscamos el botón que abrió el modal para actualizar aria-expanded
+        const controls = btn.getAttribute('aria-controls');
+        if (controls) {
+          const openBtn = document.querySelector(`button[aria-controls="${controls}"]`);
+          if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+          openBtn?.focus();
+        }
+      }
+    }
+
+    // Cierra modal si clic fuera del contenido
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        // Encuentra botón que controla este modal para aria-expanded=false
+        const modalId = event.target.id;
+        const btn = document.querySelector(`button[aria-controls="${modalId}"]`);
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        btn?.focus();
+      }
+    };
+
+    // Cierra modal con ESC
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          if (modal.style.display === 'block') {
+            modal.style.display = 'none';
+            const btn = document.querySelector(`button[aria-controls="${modal.id}"]`);
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+            btn?.focus();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
