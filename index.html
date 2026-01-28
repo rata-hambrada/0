@@ -5,31 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Catálogo Hacker</title>
 <style>
-/* =========================
-   RESET
-========================= */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   background: #f4f4f2;
-  color: #111;
+  color: #1a1a1a;
   line-height: 1.7;
   padding-bottom: 60px;
 }
 
-/* =========================
-   NAVBAR – LIMPIA Y PESADA
-========================= */
+/* NAV */
 nav {
   position: sticky;
   top: 0;
   height: 72px;
   background: #f4f4f2;
-  border-bottom: 3px solid #111;
+  border-bottom: 3px solid #1f3a5f;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,158 +30,51 @@ nav {
   z-index: 1000;
 }
 
-.logo {
-  font-size: 1.6rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
-}
-
-.menu {
-  display: flex;
-  gap: 40px;
-}
-
 .menu a {
   text-decoration: none;
-  color: #111;
+  color: #1a1a1a;
   font-weight: 700;
-  font-size: 0.95rem;
 }
 
 .menu a:hover {
   text-decoration: underline;
 }
 
-/* =========================
-   CONTENEDOR
-========================= */
-.container {
-  max-width: 1200px;
-  margin: 80px auto;
-  padding: 0 40px;
-}
-
-/* =========================
-   SECCIONES
-========================= */
-section {
-  margin-bottom: 90px;
-}
-
+/* SECCIONES */
 section h2 {
   font-size: 3rem;
   font-weight: 900;
-  margin: 0 0 40px;
-  line-height: 1.1;
+  color: #1f3a5f;
 }
 
-/* =========================
-   CONTENIDO
-========================= */
-.delito-content {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  align-items: start;
-}
-
+/* CONTENIDO */
 .delito-content img {
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
-  border: 4px solid #111;
+  border: 4px solid #1f3a5f;
 }
 
-.delito-text p {
-  font-size: 1.15rem;
-  margin: 0;
-}
-
-/* =========================
-   BOTÓN – BRUTAL
-========================= */
 .btn-info {
-  margin-top: 35px;
-  background: #111;
-  color: #f4f4f2;
-  border: none;
-  padding: 16px 34px;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  cursor: pointer;
+  background: #1f3a5f;
+  color: #ffffff;
 }
 
 .btn-info:hover {
-  background: #000;
+  background: #162c48;
 }
 
-/* =========================
-   MODAL – EDITORIAL
-========================= */
+/* MODAL */
 .modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 2000;
-  padding: 60px 20px;
+  background: rgba(31,58,95,0.35);
 }
 
 .modal-content {
-  max-width: 800px;
-  margin: auto;
   background: #f4f4f2;
-  padding: 60px;
-  border: 4px solid #111;
-  position: relative;
-}
-
-.modal-content h3 {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-top: 0;
-}
-
-.modal-content p {
-  font-size: 1.1rem;
+  border: 4px solid #1f3a5f;
 }
 
 .close {
-  position: absolute;
-  top: 20px;
-  right: 25px;
-  font-size: 32px;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 900px) {
-  section h2 {
-    font-size: 2.2rem;
-  }
-
-  .delito-content {
-    grid-template-columns: 1fr;
-  }
-
-  .container {
-    padding: 0 20px;
-  }
-
-  nav {
-    padding: 0 20px;
-  }
-
-  .menu {
-    gap: 20px;
-  }
+  color: #1f3a5f;
 }
 </style>
-
 </head>
 <body>
 <nav>
@@ -435,5 +321,6 @@ section h2 {
   </script>
 </body>
 </html>
+
 
 
