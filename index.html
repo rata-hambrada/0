@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Catálogo Hacker</title>
 <style>
-* { box-sizing: border-box; }
+/* =========================
+   RESET
+========================= */
+* {
+  box-sizing: border-box;
+}
 
+/* =========================
+   BASE
+========================= */
 body {
   margin: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -16,7 +24,9 @@ body {
   padding-bottom: 60px;
 }
 
-/* NAV */
+/* =========================
+   NAV
+========================= */
 nav {
   position: sticky;
   top: 0;
@@ -30,51 +40,219 @@ nav {
   z-index: 1000;
 }
 
+nav img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.menu {
+  display: flex;
+  gap: 40px;
+}
+
 .menu a {
   text-decoration: none;
   color: #1a1a1a;
   font-weight: 700;
+  font-size: 0.95rem;
 }
 
 .menu a:hover {
   text-decoration: underline;
 }
 
-/* SECCIONES */
+/* =========================
+   CONTENEDOR
+========================= */
+.container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 40px;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+section {
+  margin-bottom: 90px;
+}
+
 section h2 {
   font-size: 3rem;
   font-weight: 900;
+  margin: 0 0 40px;
+  line-height: 1.1;
   color: #1f3a5f;
 }
 
-/* CONTENIDO */
+/* =========================
+   CONTENIDO GENERAL
+========================= */
+.delito-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
 .delito-content img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
   border: 4px solid #1f3a5f;
 }
 
+.delito-text p {
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+/* =========================
+   BOTÓN
+========================= */
 .btn-info {
+  margin-top: 35px;
   background: #1f3a5f;
   color: #ffffff;
+  border: none;
+  padding: 16px 34px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .btn-info:hover {
   background: #162c48;
 }
 
-/* MODAL */
+/* =========================
+   MODAL
+========================= */
 .modal {
+  display: none;
+  position: fixed;
+  inset: 0;
   background: rgba(31,58,95,0.35);
+  z-index: 2000;
+  padding: 60px 20px;
 }
 
 .modal-content {
+  max-width: 800px;
+  margin: auto;
   background: #f4f4f2;
+  padding: 60px;
   border: 4px solid #1f3a5f;
+  position: relative;
+}
+
+.modal-content h3 {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-top: 0;
+  color: #1f3a5f;
+}
+
+.modal-content p {
+  font-size: 1.1rem;
+  color: #1a1a1a;
 }
 
 .close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 32px;
+  font-weight: 900;
+  cursor: pointer;
   color: #1f3a5f;
 }
+
+/* =========================
+   PERSONAS
+========================= */
+.personas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.persona-card {
+  background-color: #ffffff;
+  border: 2px solid #c9c9c9;
+  border-radius: 8px;
+  padding: 15px;
+  width: 220px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  user-select: none;
+}
+
+.persona-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid #1f3a5f;
+  border-radius: 6px;
+}
+
+.persona-info {
+  margin-top: 12px;
+  color: #1a1a1a;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.persona-info h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1f3a5f;
+}
+
+.persona-info p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #4a4a4a;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  section h2 {
+    font-size: 2.2rem;
+  }
+
+  .delito-content {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  nav {
+    padding: 0 20px;
+  }
+
+  .menu {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .personas-grid {
+    justify-content: center;
+  }
+
+  .persona-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
 </style>
+
 </head>
 <body>
 <nav>
@@ -321,6 +499,7 @@ section h2 {
   </script>
 </body>
 </html>
+
 
 
 
